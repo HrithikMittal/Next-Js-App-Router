@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 import Link from "next/link";
+import "./global.css";
+import NavBar from "../components/nav-bar";
 
 interface LayoutProps {
   children: ReactNode;
@@ -8,24 +10,20 @@ interface LayoutProps {
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html>
-      <body>
+      <body className="flex flex-col px-4 py-2 min-h-screen bg-orange-50">
         <header>
-          <nav>
-            <ul>
-              <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li>
-                <Link href="/reviews">Reviews</Link>
-              </li>
-              <li>
-                <Link href="/about">About</Link>
-              </li>
-            </ul>
-          </nav>
+          <NavBar />
         </header>
-        <div> {children}</div>
-        <div>[footer]</div>
+        <div className="flex flex-1 py-3"> {children}</div>
+        <div className="border-t py-3 text-center text-xs">
+          Please checkout me on{" "}
+          <a
+            href="https://adhikanshmittal.com"
+            className="text-orange-800 hover:underline"
+          >
+            adhikanshmittal.com
+          </a>
+        </div>
       </body>
     </html>
   );
