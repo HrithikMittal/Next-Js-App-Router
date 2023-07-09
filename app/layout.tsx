@@ -14,7 +14,7 @@ export default function RootLayout({ children }: LayoutProps) {
           <NavBar />
         </header>
         <div className="flex-1 py-3"> {children}</div>
-        <div className="border-t py-3 text-center text-xs">
+        <div className="border-t py-3 text-center text-lg">
           Please checkout me on{" "}
           <a
             href="https://adhikanshmittal.com"

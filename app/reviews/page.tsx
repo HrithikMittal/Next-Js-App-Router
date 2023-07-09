@@ -6,9 +6,9 @@ const Reviews = () => {
   return (
     <>
       <Heading>Reviews</Heading>
-      <div className="flex gap-x-10 py-5">
+      <div className="flex gap-x-10 py-5 ">
         {games.map((game) => (
-          <div key={game.link}>
+          <div key={game.link} className="hover:shadow-xl">
             <Link href={`/reviews/${game.link}`}>
               <img
                 src={game.image}
@@ -16,7 +16,7 @@ const Reviews = () => {
                 height={"360"}
                 className="mb-2 rounded"
               />
-              <p>{game.name}</p>
+              <p className="text-center pb-3">{game.name}</p>
             </Link>
           </div>
         ))}
