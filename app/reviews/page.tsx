@@ -1,13 +1,26 @@
+import Heading from "@/components/heading";
+import { games } from "@/constants/data";
+import Link from "next/link";
+
 const Reviews = () => {
   return (
     <>
-      <h1>Reviews</h1>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque
-        molestiae quibusdam adipisci ut exercitationem odit a iste enim
-        obcaecati sunt recusandae iure, laboriosam reprehenderit, blanditiis,
-        odio maxime doloremque nisi repellendus.
-      </p>
+      <Heading>Reviews</Heading>
+      <div className="flex gap-x-10 py-5">
+        {games.map((game) => (
+          <div key={game.link}>
+            <Link href={`/reviews/${game.link}`}>
+              <img
+                src={game.image}
+                width={"450"}
+                height={"360"}
+                className="mb-2 rounded"
+              />
+              <p>{game.name}</p>
+            </Link>
+          </div>
+        ))}
+      </div>
     </>
   );
 };
