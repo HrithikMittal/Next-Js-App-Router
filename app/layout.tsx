@@ -7,9 +7,11 @@ interface LayoutProps {
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html>
-      <header>[header]</header>
-      <body>{children}</body>
-      <footer>[footer]</footer>
+      <body>
+        <header>[header]</header>
+        <div> {children}</div>
+        <div>[footer]</div>
+      </body>
     </html>
   );
 }
