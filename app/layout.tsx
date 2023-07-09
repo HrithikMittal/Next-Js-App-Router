@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
-import Link from "next/link";
 import "./global.css";
-import NavBar from "../components/nav-bar";
+import NavBar from "@/components/nav-bar";
 
 interface LayoutProps {
   children: ReactNode;
@@ -14,7 +13,7 @@ export default function RootLayout({ children }: LayoutProps) {
         <header>
           <NavBar />
         </header>
-        <div className="flex flex-1 py-3"> {children}</div>
+        <div className="flex-1 py-3"> {children}</div>
         <div className="border-t py-3 text-center text-xs">
           Please checkout me on{" "}
           <a
