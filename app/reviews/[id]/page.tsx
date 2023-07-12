@@ -1,4 +1,5 @@
 import Heading from "@/components/heading";
+import ShareLink from "@/components/share-link";
 import { getReview } from "@/lib/reviews";
 import { getReviewSlugs } from "@/lib/reviews";
 
@@ -20,7 +21,10 @@ const PlaceReview = async ({ params }: { params: { id: string } }) => {
   return (
     <div>
       <Heading>{title}</Heading>
-      <p className="italic pb-2">{date}</p>
+
+      <p className="italic pb-2">
+        {date} <ShareLink />
+      </p>
       <img src={image} width={"640"} height={"360"} className="mb-2 rounded" />
       <div
         dangerouslySetInnerHTML={{
