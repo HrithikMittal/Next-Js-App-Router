@@ -1,27 +1,18 @@
-import { readFile } from "node:fs/promises";
-import { marked } from "marked";
-import matter from "gray-matter";
-
 import Heading from "@/components/heading";
+import { getReview } from "@/lib/reviews";
 
 const PlaceReview = async ({ params }: { params: { id: string } }) => {
-  const text = await readFile(`./content/reviews/${params.id[0]}.md`, "utf-8");
-  const { data, content } = matter(text);
-  const html = marked(content, { mangle: false, headerIds: false });
+  // params.id[0]
+  const { title, date, image, body } = await getReview(params.id[0]);
 
   return (
     <div>
-      <Heading>{data?.title}</Heading>
-      <p className="italic pb-2">{data?.date}</p>
-      <img
-        src={data?.image}
-        width={"640"}
-        height={"360"}
-        className="mb-2 rounded"
-      />
+      <Heading>{title}</Heading>
+      <p className="italic pb-2">{date}</p>
+      <img src={image} width={"640"} height={"360"} className="mb-2 rounded" />
       <div
         dangerouslySetInnerHTML={{
-          __html: html,
+          __html: body,
         }}
         className="prose"
       ></div>
