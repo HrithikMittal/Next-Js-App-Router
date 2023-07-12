@@ -7,6 +7,13 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ id: slug }));
 }
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const { title } = await getReview(params.id);
+  return {
+    title: title,
+  };
+}
+
 const PlaceReview = async ({ params }: { params: { id: string } }) => {
   const { title, date, image, body } = await getReview(params.id);
 

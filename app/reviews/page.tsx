@@ -3,6 +3,10 @@ import Link from "next/link";
 
 import { getReviews } from "@/lib/reviews";
 
+export const metadata = {
+  title: "Reviews",
+};
+
 const Reviews = async () => {
   const reviews = await getReviews();
   return (

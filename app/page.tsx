@@ -1,5 +1,10 @@
 import Heading from "../components/heading";
 
+export const metadata = {
+  title: "Home Page",
+  description: "This is the home page of the app",
+};
+
 const HomePage = () => {
   return (
     <>
