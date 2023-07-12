@@ -8,8 +8,8 @@ const Reviews = () => {
       <Heading>Reviews</Heading>
       <div className="flex gap-x-10 py-5 ">
         {games.map((game) => (
-          <div key={game.link} className="hover:shadow-xl">
-            <Link href={`/reviews/${game.link}`}>
+          <div key={game.id} className="hover:shadow-xl">
+            <Link href={`/reviews/${game.id}`}>
               <img
                 src={game.image}
                 width={"450"}
