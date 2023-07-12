@@ -1,5 +1,11 @@
 import Heading from "@/components/heading";
 import { getReview } from "@/lib/reviews";
+import { getReviewSlugs } from "@/lib/reviews";
+
+export async function generateStaticParams() {
+  const slugs = await getReviewSlugs();
+  return slugs.map((slug) => ({ id: slug }));
+}
 
 const PlaceReview = async ({ params }: { params: { id: string } }) => {
   const { title, date, image, body } = await getReview(params.id);

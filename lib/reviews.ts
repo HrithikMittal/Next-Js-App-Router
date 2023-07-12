@@ -12,13 +12,17 @@ async function getReview(id: string) {
   return { id, title, date, image, body };
 }
 
-async function getReviews() {
+async function getReviewSlugs() {
   const files = await readdir("./content/reviews");
-  const slugs = files
+  return files
     .filter((file) => file.endsWith(".md"))
     .map(
       (file) => file.slice(0, -3) // remove .md
     );
+}
+
+async function getReviews() {
+  const slugs = await getReviewSlugs();
   const reviews = [];
   for (const slug of slugs) {
     const review = await getReview(slug);
@@ -27,4 +31,4 @@ async function getReviews() {
   return reviews;
 }
 
-export { getReview, getReviews };
+export { getReview, getReviews, getReviewSlugs };
