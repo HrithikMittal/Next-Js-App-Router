@@ -2,8 +2,7 @@ import Heading from "@/components/heading";
 import { getReview } from "@/lib/reviews";
 
 const PlaceReview = async ({ params }: { params: { id: string } }) => {
-  // params.id[0]
-  const { title, date, image, body } = await getReview(params.id[0]);
+  const { title, date, image, body } = await getReview(params.id);
 
   return (
     <div>
