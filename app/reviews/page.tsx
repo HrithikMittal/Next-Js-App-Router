@@ -1,22 +1,24 @@
 import Heading from "@/components/heading";
-import { games } from "@/constants/data";
 import Link from "next/link";
 
-const Reviews = () => {
+import { getReviews } from "@/lib/reviews";
+
+const Reviews = async () => {
+  const reviews = await getReviews();
   return (
     <>
       <Heading>Reviews</Heading>
       <div className="flex gap-x-10 py-5 ">
-        {games.map((game) => (
-          <div key={game.id} className="hover:shadow-xl">
-            <Link href={`/reviews/${game.id}`}>
+        {reviews.map(({ id, image, title }) => (
+          <div key={id} className="hover:shadow-xl">
+            <Link href={`/reviews/${id}`}>
               <img
-                src={game.image}
+                src={image}
                 width={"450"}
                 height={"360"}
                 className="mb-2 rounded"
               />
-              <p className="text-center pb-3">{game.name}</p>
+              <p className="text-center pb-3">{title}</p>
             </Link>
           </div>
         ))}

@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import { marked } from "marked";
 import matter from "gray-matter";
 
@@ -9,7 +9,22 @@ async function getReview(id: string) {
     content,
   } = matter(text);
   const body = marked(content, { mangle: false, headerIds: false });
-  return { title, date, image, body };
+  return { id, title, date, image, body };
 }
 
-export { getReview };
+async function getReviews() {
+  const files = await readdir("./content/reviews");
+  const slugs = files
+    .filter((file) => file.endsWith(".md"))
+    .map(
+      (file) => file.slice(0, -3) // remove .md
+    );
+  const reviews = [];
+  for (const slug of slugs) {
+    const review = await getReview(slug);
+    reviews.push(review);
+  }
+  return reviews;
+}
+
+export { getReview, getReviews };
